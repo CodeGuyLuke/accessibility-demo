@@ -33,7 +33,7 @@ export const LoginScreen = () => {
           source={meetupCoverImage}
           style={styles.image}
           accessible={true}
-          accessibilityLabel="React Native Poznań meetup background image."
+          accessibilityLabel="React Native Poznan meetup background image."
         />
         <View style={styles.contentContainer}>
           <Input

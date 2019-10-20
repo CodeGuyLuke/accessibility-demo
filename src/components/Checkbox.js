@@ -47,8 +47,8 @@ export const Checkbox = ({
           color={checked ? colors.green : colors.grey}
         />
       </TouchableOpacity>
-      <View accessibilityElementsHidden={true}>
-        <Text style={styles.label}>{label}</Text>
+      <View accessibilityElementsHidden={true} style={styles.label}>
+        <Text>{label}</Text>
       </View>
     </View>
   )
@@ -68,5 +68,6 @@ const styles = StyleSheet.create({
   label: {
     flex: 1,
     marginLeft: 2,
+    justifyContent: 'center',
   },
 })
