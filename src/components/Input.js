@@ -6,11 +6,13 @@ import { colors } from '../styles/colors'
 
 export const Input = ({ type, ...props }) => (
   <View style={styles.container}>
-    {type === 'password' ? (
-      <FontAwesomeIcon name="lock" color={colors.navy} size={20} />
-    ) : (
-      <FontAwesomeIcon name="envelope" color={colors.navy} size={16} />
-    )}
+    <View accessibilityElementsHidden={true}>
+      {type === 'password' ? (
+        <FontAwesomeIcon name="lock" color={colors.navy} size={20} />
+      ) : (
+        <FontAwesomeIcon name="envelope" color={colors.navy} size={16} />
+      )}
+    </View>
 
     <TextInput
       style={styles.textInput}

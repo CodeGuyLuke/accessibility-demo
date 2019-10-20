@@ -10,6 +10,12 @@ import {
 } from 'react-native'
 
 import { Input, Checkbox, Button } from '../components'
+import {
+  EmailInputHint,
+  PasswordInputHint,
+  CheckboxButtonHint,
+  CheckboxLabelHint,
+} from '../accessibility/hints'
 import meetupCoverImage from '../../assets/images/meetup_cover.png'
 
 export const LoginScreen = () => {
@@ -21,18 +27,39 @@ export const LoginScreen = () => {
   const handleLoginButtonPress = () => Alert.alert('Logging in...')
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+    <TouchableWithoutFeedback accessible={false} onPress={Keyboard.dismiss}>
       <SafeAreaView style={styles.container}>
-        <Image source={meetupCoverImage} style={styles.image} />
+        <Image
+          source={meetupCoverImage}
+          style={styles.image}
+          accessible={true}
+          accessibilityLabel="React Native Poznań meetup background image."
+        />
         <View style={styles.contentContainer}>
-          <Input type="email" value={email} onChangeText={setEmail} />
-          <Input type="password" value={password} onChangeText={setPassword} />
+          <Input
+            accessibilityLabel="EmailInput"
+            accessibilityHint={EmailInputHint}
+            type="email"
+            value={email}
+            onChangeText={setEmail}
+          />
+          <Input
+            accessibilityLabel="PasswordInput"
+            accessibilityHint={PasswordInputHint}
+            type="password"
+            value={password}
+            onChangeText={setPassword}
+          />
           <Checkbox
             checked={termsAccepted}
             onPress={handleTermsCheckboxPress}
             label="I have read and accept Terms & Conditions"
+            accessibilityLabel="TermsAndConditions"
+            accessibilityButtonHint={CheckboxButtonHint}
+            accessibilityLabelHint={CheckboxLabelHint}
           />
           <Button
+            accessibilityLabel="LoginButton"
             disabled={!email || !password || !termsAccepted}
             onPress={handleLoginButtonPress}
             label="Log in"

@@ -10,6 +10,7 @@ export const Button = ({ label, ...props }) => (
       styles.container,
       { backgroundColor: props.disabled ? colors.grey : colors.navy },
     ]}
+    accessibilityStates={props.disabled ? ['disabled'] : []}
   >
     <Text style={styles.label}>{label}</Text>
   </TouchableOpacity>

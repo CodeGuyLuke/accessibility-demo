@@ -18,21 +18,38 @@ const LAYOUT_ANIMATION_CONFIG = {
   },
 }
 
-export const Checkbox = ({ checked, onPress, label }) => {
+export const Checkbox = ({
+  checked,
+  onPress,
+  label,
+  accessibilityLabel,
+  accessibilityButtonHint,
+  accessibilityLabelHint,
+}) => {
   useEffect(() => {
     LayoutAnimation.configureNext(LAYOUT_ANIMATION_CONFIG)
   }, [checked])
 
+  accessibilityStates = checked ? ['checked'] : ['unchecked']
+
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onPress} style={styles.button}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={styles.button}
+        accessibilityLabel={`${accessibilityLabel}Checkbox`}
+        accessibilityHint={accessibilityButtonHint}
+        accessibilityStates={accessibilityStates}
+      >
         <FontAwesomeIcon
           name={checked ? 'check-square-o' : 'square-o'}
           size={checked ? 24 : 24}
           color={checked ? colors.green : colors.grey}
         />
       </TouchableOpacity>
-      <Text style={styles.label}>{label}</Text>
+      <View accessibilityElementsHidden={true}>
+        <Text style={styles.label}>{label}</Text>
+      </View>
     </View>
   )
 }
